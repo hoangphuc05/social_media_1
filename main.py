@@ -2,6 +2,7 @@ import credential
 import mysql.connector
 import credential
 import user
+import post
 
 
 
@@ -54,6 +55,6 @@ for x in myresult:
 
 
 
-user.createAccount(mydb, "pcai225", "a", "b", "m", "a")
+post.createPost(mydb, "pcai22","This is the first post")
 
 
