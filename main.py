@@ -1,6 +1,7 @@
 import credential
 import mysql.connector
 import credential
+import user
 
 
 
@@ -13,7 +14,7 @@ mydb = mysql.connector.connect(
 )
 
 
-credential.createCredential(mydb,'user123','Usser123','user123@gmail.com')
+#credential.createCredential(mydb,'user123','Usser123','user123@gmail.com')
 
 mycursor = mydb.cursor()
 
@@ -38,20 +39,21 @@ for x in myresult:
 # credential.createCredential(mydb, username, password, email)
 
 # Test change password
-print("Creating a new account")
-while True:
-    username = input("Input username: ")
-    newPass = input("New password: ")
-    newEmail = input("New Email: ")
-    #check if all 3 fields contain information
-    if username and newPass and newEmail:
-        #exit while loop
-        break
+# print("Creating a new account")
+# while True:
+#     username = input("Input username: ")
+#     newPass = input("New password: ")
+#     newEmail = input("New Email: ")
+#     #check if all 3 fields contain information
+#     if username and newPass and newEmail:
+#         #exit while loop
+#         break
 
-credential.changePassword(mydb, username, newPass)
-credential,credential.changeEmail(mydb, username, newEmail)
+# credential.changePassword(mydb, username, newPass)
+# credential,credential.changeEmail(mydb, username, newEmail)
 
 
 
+user.createAccount(mydb, "pcai225", "a", "b", "m", "a")
 
 
