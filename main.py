@@ -91,7 +91,7 @@ print("Login success!")
 
 #print all information
 print("This is your account information")
-user.getAccount(mydb, username)
+print(user.getAccount(mydb, username))
 
 #get all follower
 print("This is the list of people you are following:")
