@@ -1,3 +1,4 @@
+#add a folllower to the user's account
 def addFollowerToList(mydb, AuthorFollowID, FollowerID):
     mycursor = mydb.cursor()
     sql = "INSERT INTO FOLLOWER (AuthorFollowID, FollowerID) VALUES (%s, %s)"
@@ -6,6 +7,7 @@ def addFollowerToList(mydb, AuthorFollowID, FollowerID):
     mycursor.execute(sql, val)
     mydb.commit()
 
+#delete a follower from the user's account
 def deleteFollower(mydb, FollowerID):
     mycursor = mydb.cursor()
     sql = "DELETE FROM FOLLOWER WHERE FollowerID = %s"
@@ -13,6 +15,20 @@ def deleteFollower(mydb, FollowerID):
     mycursor.execute(sql, (FollowerID,))
     
     mydb.commit()
+
+
+#count the number of followers that an account has
+def countFollowers(mydb, AuthorFollowID):
+    mycursor = mydb.cursor()
+    sql = "SELECT COUNT(FollowerID) FROM FOLLOWER WHERE AuthorFollowID = %s"
+    val = (AuthorFollowID,)
+    mycursor.execute(sql, val)
+    
+    myresult = mycursor.fetchall()
+    for x in myresult:
+        print(x)
+
+
 
     
 

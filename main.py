@@ -3,9 +3,7 @@ import mysql.connector
 import credential
 import user
 import post
-
-
-
+import follower
 
 mydb = mysql.connector.connect(
   host="api.hphucs.me",
@@ -24,7 +22,7 @@ mycursor.execute("SELECT * FROM CREDENTIAL")
 myresult = mycursor.fetchall()
 
 for x in myresult:
-  print(x)
+  print(x) 
 
 # # test create account
 # print("Creating a new account")
@@ -53,8 +51,9 @@ for x in myresult:
 # credential.changePassword(mydb, username, newPass)
 # credential,credential.changeEmail(mydb, username, newEmail)
 
+# Test add followers to the list of followers
+follower.countFollowers(mydb, 'Phuc')
 
-
-post.createPost(mydb, "pcai22","This is the first post")
+#post.createPost(mydb, "pcai22","This is the first post")
 
 
