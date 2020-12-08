@@ -6,3 +6,4 @@ def createAction(mydb,ActionID,UserID,PostID,Time,ActionDescr):
 
     mycursor.execute(sql,val)
     mydb.commit()
+
