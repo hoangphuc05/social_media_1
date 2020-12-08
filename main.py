@@ -5,9 +5,6 @@ import user
 import post
 import follower
 
-
-
-
 mydb = mysql.connector.connect(
     host="api.hphucs.me",
     user="cs300",
@@ -54,9 +51,15 @@ for x in myresult:
 # credential.changePassword(mydb, username, newPass)
 # credential,credential.changeEmail(mydb, username, newEmail)
 
+# Test add followers to the list of followers
+follower.countFollowers(mydb, 'Phuc')
 
+<<<<<<< HEAD
+#post.createPost(mydb, "pcai22","This is the first post")
+=======
 
 # post.createPost(mydb, "pcai22","This is the first post")
+>>>>>>> af5b0fd911112a9c610c6d95c43daae8e82485e6
 
 
 # print(credential.checkCredential(mydb, "pcai22", "Whitworth123"))
@@ -91,7 +94,7 @@ print("Login success!")
 
 #print all information
 print("This is your account information")
-user.getAccount(mydb, username)
+print(user.getAccount(mydb, username))
 
 #get all follower
 print("This is the list of people you are following:")
