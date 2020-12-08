@@ -1,4 +1,5 @@
 
+#create credential
 def createCredential(mydb, username, password, email):
     mycursor = mydb.cursor()
     sql = "INSERT INTO CREDENTIAL (UserName, Password, Email) VALUES (%s, %s, %s)"
@@ -9,20 +10,33 @@ def createCredential(mydb, username, password, email):
 
 #change the password of the user
 def changePassword(mydb, username, newPassword):
-    mycuursor = mydb.cursor()
+    mycursor = mydb.cursor()
     sql = "UPDATE CREDENTIAL SET Password = %s WHERE UserName = %s"
     val = (newPassword, username)
 
-    mycuursor.execute(sql, val)
+    mycursor.execute(sql, val)
     mydb.commit()
 
 #change the email of the user
 def changeEmail(mydb, username, newEmail):
-    mycuursor = mydb.cursor()
+    mycursor = mydb.cursor()
     sql = "UPDATE CREDENTIAL SET Email = %s WHERE UserName = %s"
     val = (newEmail, username)
 
-    mycuursor.execute(sql, val)
+    mycursor.execute(sql, val)
     mydb.commit()
 
+def checkCredential(mydb, username, password):
+    mycursor = mydb.cursor()
+    sql = "SELECT Password from CREDENTIAL where UserName = %s"
+    val = (username,)
+    mycursor.execute(sql, val)
+
+    myresult = mycursor.fetchall()
+
+
+    if myresult[0][0] == password:
+        return True
+    else:
+        return False
 
