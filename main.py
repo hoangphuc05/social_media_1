@@ -54,12 +54,8 @@ for x in myresult:
 # Test add followers to the list of followers
 follower.countFollowers(mydb, 'Phuc')
 
-<<<<<<< HEAD
-#post.createPost(mydb, "pcai22","This is the first post")
-=======
 
 # post.createPost(mydb, "pcai22","This is the first post")
->>>>>>> af5b0fd911112a9c610c6d95c43daae8e82485e6
 
 
 # print(credential.checkCredential(mydb, "pcai22", "Whitworth123"))

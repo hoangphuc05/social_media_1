@@ -9,3 +9,14 @@ def createAccount(mydb,username, Fname, Lname, Gender, DBirth):
 
     mycursor.execute(sql, val)
     mydb.commit()
+
+def getAccount(mydb, username):
+    mycursor = mydb.cursor()
+    sql = "SELECT * FROM USER WHERE UserName = %s"
+    val = (username,)
+
+    mycursor.execute(sql, val)
+
+    myresult = mycursor.fetchall()
+
+    return myresult
