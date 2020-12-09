@@ -4,6 +4,7 @@ import credential
 import user
 import post
 import follower
+import action
 
 mydb = mysql.connector.connect(
     host="api.hphucs.me",
@@ -21,8 +22,7 @@ mycursor.execute("SELECT * FROM CREDENTIAL")
 
 myresult = mycursor.fetchall()
 
-for x in myresult:
-    print(x)
+
 
 # # test create account
 # print("Creating a new account")
