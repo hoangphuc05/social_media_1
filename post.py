@@ -17,3 +17,19 @@ def getAllUserPost(mydb, username):
     myresult = mycursor.fetchall()
 
     return myresult
+
+#Count Likes
+def countLikes(mydb, PostID, ActionID):
+    mycursor = mydb.cursor()
+    sql = "SELECT A.PostID, A.UserName FROM ACTION as A WHERE A.ActionDescription = 'like post' AND A.PostID = %s"
+    val = (PostID,)
+
+    mycursor.execute(sql,val)
+
+    myresult = mycursor.fetchall()
+    for likes in myresult:
+        print (likes)
+    print(len(myresult))
+        
+
+    
