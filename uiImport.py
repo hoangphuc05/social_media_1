@@ -7,7 +7,7 @@ class Ui(QtWidgets.QMainWindow):
         super(Ui, self).__init__()
         uic.loadUi('login.ui', self)
         self.show()
-        self.newAccount.clicked.connect(self.getLoginInfo)
+        self.newAccount.clicked.connect(self.newAccount)
         self.registerAccount = Ui2(self)
         #self.usernameLabel.setText('')
 
