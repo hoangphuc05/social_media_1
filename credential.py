@@ -34,7 +34,8 @@ def checkCredential(mydb, username, password):
 
     myresult = mycursor.fetchall()
 
-
+    if len(myresult) == 0:
+        return False
     if myresult[0][0] == password:
         return True
     else:
