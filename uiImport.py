@@ -5,15 +5,15 @@ from functools import partial
 class Ui(QtWidgets.QMainWindow):
     def __init__(self, parent = None):
         super(Ui, self).__init__()
-        uic.loadUi('login.ui', self)
+        uic.loadUi('newacct.ui', self)
         self.show()
-        self.newAccount.clicked.connect(self.getLoginInfo)
-        self.registerAccount = Ui2(self)
-        #self.usernameLabel.setText('')
+    #     self.newAccount.clicked.connect(self.getLoginInfo)
+    #     self.registerAccount = Ui2(self)
+    #     #self.usernameLabel.setText('')
 
-    def newAccount(self):
-        print("a")
-        self.registerAccount.show()
+    # def newAccount(self):
+    #     print("a")
+    #     self.registerAccount.show()
 
 class Ui2(QtWidgets.QMainWindow):
     def __init__(self, parent = None):
