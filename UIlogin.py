@@ -5,6 +5,7 @@ import credential
 import mysql.connector
 import UInewAccount
 from UIpopup import PopUp
+from UIprofile import Profile
 
 
 class Login(QtWidgets.QMainWindow):
@@ -18,6 +19,7 @@ class Login(QtWidgets.QMainWindow):
         self.LoginButton.clicked.connect(self.login)
         self.registerAccount = UInewAccount.NewAcct(self)
         self.popup = PopUp(self)
+        self.profile = Profile(self)
         #self.usernameLabel.setText('')
 
     def newAccount(self):
@@ -30,6 +32,7 @@ class Login(QtWidgets.QMainWindow):
         if (credential.checkCredential(mydb, username, password)):
             print("success")
             #call the profile windows here
+            self.profile.update(username)
         else:
             print("Wrong password")
             self.popup.show()

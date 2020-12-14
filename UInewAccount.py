@@ -38,10 +38,6 @@ class NewAcct(QtWidgets.QMainWindow):
             credential.createCredential(mydb,UserName,Password,Email)
             user.createAccount(mydb,UserName,FirstName,LastName,Gender,dob)
 
-
-
-
-
 mydb = mysql.connector.connect(
     host="api.hphucs.me",
     user="cs300",
@@ -49,7 +45,11 @@ mydb = mysql.connector.connect(
     database="FinalProject"
 )
 
-app = QtWidgets.QApplication(sys.argv)
-window = NewAcct()
-window.show()
-app.exec()
+if __name__ == '__main__':
+
+
+
+    app = QtWidgets.QApplication(sys.argv)
+    window = NewAcct()
+    window.show()
+    app.exec()
