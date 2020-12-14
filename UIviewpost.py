@@ -14,22 +14,46 @@ class Viewpost(QtWidgets.QMainWindow):
         super(Viewpost, self).__init__()
         uic.loadUi('ui/viewpost.ui', self)
         self.currentIndex = 0
+        self.indexMax = 0
+        self.nextButton.clicked.connect(self.nextPost)
+        self.prevButton.clicked.connect(self.prevPost)
+        #self.likeButton.clicked.connect(self.likePost)
+        #self.saveButton.clicked.connect(self.savePost)
         #self.show()
         #self.usernameLabel.setText('')
 
     def update(self, user):
+        self.currentUser = user
         postContent = post.getFollowerPosts(mydb, user, self.currentIndex)
+        self.indexMax = post.countVisiblePost(mydb, user) - 1
+        self.authorLabel.setText(str(postContent[1]))
+        self.content.setText(str(postContent[2]))
 
-    def login(self):
-        username = self.usernameInput.text()
-        password = self.passwordInput.text()
-        if (credential.checkCredential(mydb, username, password)):
-            print("success")
-            #call the profile windows here
-            self.profile.update(username)
+    def nextPost(self):
+        if self.currentIndex < self.indexMax:
+            self.currentIndex += 1
         else:
-            print("Wrong password")
-            self.popup.show()
+            self.currentIndex = 0
+        self.update(self.currentUser)
+        print(self.currentIndex)
+
+    def prevPost(self):
+        if self.currentIndex > 0:
+            self.currentIndex -= 1
+        else:
+            self.currentIndex = self.indexMax
+        self.update(self.currentUser)
+        print(self.currentIndex)
+
+    def likePost(self):
+        #like post here
+        pass
+
+    def savePost(self):
+        #save post here
+        pass
+            
+
 
 
 
@@ -42,6 +66,8 @@ mydb = mysql.connector.connect(
 
 
 app = QtWidgets.QApplication(sys.argv)
-window = Login()
+window = Viewpost()
+
 window.show()
+window.update("nhatminh")
 app.exec()

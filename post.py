@@ -45,8 +45,7 @@ def getFollowerPosts(mydb, username, index = 0):
     # 	WHERE F.AuthorFollowID = 'nhatminh')
     # LIMIT 0,1;
     mycursor = mydb.cursor()
-    sql = '''
-        SELECT * from POST P
+    sql = '''SELECT * from POST P
         WHERE P.UserName IN
             (SELECT FollowerID FROM FOLLOWER as F
             WHERE F.AuthorFollowID = %s)
@@ -56,6 +55,22 @@ def getFollowerPosts(mydb, username, index = 0):
 
     mycursor.execute(sql,val)
     myresult = mycursor.fetchall()
-    return myresult[0]
+    if len(myresult) == 0:
+        return (0,0,0)
+    else:
+        return myresult[0]
+
+def countVisiblePost(mydb, username):
+    mycursor = mydb.cursor()
+    sql = '''SELECT * from POST P
+        WHERE P.UserName IN
+            (SELECT FollowerID FROM FOLLOWER as F
+            WHERE F.AuthorFollowID = %s);
+        '''
+    val = (username,)
+
+    mycursor.execute(sql,val)
+    myresult = mycursor.fetchall()
+    return len(myresult)
 
     
