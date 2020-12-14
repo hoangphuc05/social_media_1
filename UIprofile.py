@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtCore
 import user
+import follower
 import sys
 import mysql.connector
 
@@ -20,6 +21,7 @@ class Profile(QtWidgets.QMainWindow):
         self.lastNameLabel.setText(profile[2])
         self.genderValue.setText(profile[3])
         self.DoBValue.setText(str(profile[4]))
+        self.followerCount.setText(str(follower.countFollowers(mydb, username)))
         self.show()
 
 

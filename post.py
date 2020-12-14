@@ -38,4 +38,24 @@ def countLikes(mydb, PostID, ActionID):
     print(len(myresult))
         
 
+def getFollowerPosts(mydb, username, index = 0):
+    # SELECT * from POST P
+    # WHERE P.UserName IN
+    # 	(SELECT FollowerID FROM FOLLOWER as F
+    # 	WHERE F.AuthorFollowID = 'nhatminh')
+    # LIMIT 0,1;
+    mycursor = mydb.cursor()
+    sql = '''
+        SELECT * from POST P
+        WHERE P.UserName IN
+            (SELECT FollowerID FROM FOLLOWER as F
+            WHERE F.AuthorFollowID = %s)
+        LIMIT %s,1;
+        '''
+    val = (username,index)
+
+    mycursor.execute(sql,val)
+    myresult = mycursor.fetchall()
+    return myresult[0]
+
     
