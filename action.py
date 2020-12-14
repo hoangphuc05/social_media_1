@@ -1,11 +1,11 @@
 
 from datetime import datetime
 #create a action
-def createAction(mydb,ActionID,UserID,PostID,ActionDescr):
+def createAction(mydb,UserID,PostID,ActionDescr):
     mycursor = mydb.cursor()
     Time = datetime.now()
-    sql = "INSERT INTO ACTION (ActionID,UserName,PostID,Time,ActionDescription) VALUES (%s,%s,%s,%s,%s)"
-    val = (ActionID,UserID,PostID,Time,ActionDescr)
+    sql = "INSERT INTO ACTION (UserName,PostID,Time,ActionDescription) VALUES (%s,%s,%s,%s)"
+    val = (UserID,PostID,Time,ActionDescr)
 
     mycursor.execute(sql,val)
     mydb.commit()
@@ -22,14 +22,18 @@ def savePost(mydb,UserId,PostID,ActionID):
     mydb.commit()
 
 #Like a Post
-def likePost(mydb, UserID, PostID, ActionID):
+def likePost(mydb, UserID, PostID):
     mycursor = mydb.cursor()
     Time = datetime.now()
-    sql = "INSERT INTO ACTION (ActionID,UserName,PostID,Time,ActionDescription) VALUES (%s,%s,%s,%s,'like post')"
-    val = (ActionID,UserID,PostID,Time)
+    sql = "INSERT INTO ACTION (UserName,PostID,Time,ActionDescription) VALUES (%s,%s,%s,'like post')"
+    val = (UserID,PostID,Time)
 
     mycursor.execute(sql,val)
     mydb.commit()
+
+def createPost(mydb, UserID, PostID):
+    createAction(mydb, UserID, PostID, "Create post")
+
 
 
 

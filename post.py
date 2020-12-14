@@ -1,3 +1,5 @@
+import action
+
 
 def createPost(mydb,username,content):
     mycursor = mydb.cursor()
@@ -6,6 +8,10 @@ def createPost(mydb,username,content):
 
     mycursor.execute(sql,val)
     mydb.commit()
+
+    postID =  mycursor.lastrowid
+    action.createPost(mydb, username, postID)
+
 
 def getAllUserPost(mydb, username):
     mycursor = mydb.cursor()
