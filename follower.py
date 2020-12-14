@@ -1,3 +1,5 @@
+import action
+
 #add a folllower to the user's account
 def addFollowerToList(mydb, AuthorFollowID, FollowerID):
     mycursor = mydb.cursor()
@@ -5,7 +7,10 @@ def addFollowerToList(mydb, AuthorFollowID, FollowerID):
     val = (AuthorFollowID, FollowerID)
 
     mycursor.execute(sql, val)
+    
     mydb.commit()
+
+
 
 #delete a follower from the user's account
 def deleteFollower(mydb, FollowerID):

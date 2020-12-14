@@ -17,6 +17,6 @@ def getAccount(mydb, username):
 
     mycursor.execute(sql, val)
 
-    myresult = mycursor.fetchall()
 
+    myresult = mycursor.fetchall()
     return myresult
