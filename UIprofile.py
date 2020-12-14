@@ -21,6 +21,7 @@ class Profile(QtWidgets.QMainWindow):
     def update(self, username):
         self.username = username
         profile = user.getAccount(mydb, username)[0]
+        self.user = username
         self.usernameLabel.setText(profile[0])
         #self.usernameLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.firstNameLabel.setText(profile[1])
@@ -31,6 +32,7 @@ class Profile(QtWidgets.QMainWindow):
         self.show()
 
     def callWritePost(self):
+        self.createPost.updateUser(self.user)
         self.createPost.show() 
 
     def viewAllPost(self):
