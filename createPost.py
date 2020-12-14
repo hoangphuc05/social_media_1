@@ -3,9 +3,11 @@ import action
 import mysql.connector
 
 
-def createPost(mydb, userID, postContent):
-    postID = post.createPost(mydb, userID, postContent)
-    action.createPost(mydb, userID, postID)
+# def createPost(mydb, userID, postContent):
+#     postID = post.createPost(mydb, userID, postContent)
+#     action.createPost(mydb, userID, postID)
+
+
 
 
 mydb = mysql.connector.connect(
@@ -16,4 +18,4 @@ mydb = mysql.connector.connect(
 )
 
 
-createPost(mydb, "pcai22", "The second post abcd")
+post.createPost(mydb, "pcai22", "acb")
