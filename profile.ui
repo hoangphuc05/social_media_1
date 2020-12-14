@@ -158,7 +158,7 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="createPostButton">
           <property name="text">
            <string>Create post</string>
           </property>

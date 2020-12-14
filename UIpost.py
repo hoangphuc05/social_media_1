@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic, QtCore
 import sys
 from functools import partial
-import mysql.connector
+import mysql.connector 
 import post
 import user
 
@@ -25,7 +25,7 @@ mydb = mysql.connector.connect(
     database="FinalProject"
 )
 
-app = QtWidgets.QApplication(sys.argv)
-window = CreatePostUI()
-window.show()
-app.exec()   
+# app = QtWidgets.QApplication(sys.argv)
+# window = CreatePostUI()
+# window.show()
+# app.exec()   

@@ -3,6 +3,7 @@ import user
 import follower
 import sys
 import mysql.connector
+from UIpost import CreatePostUI
 
 class Profile(QtWidgets.QMainWindow):
     global mydb
@@ -10,7 +11,8 @@ class Profile(QtWidgets.QMainWindow):
         
         super(Profile, self).__init__()
         uic.loadUi('profile.ui', self)
-        
+        self.createPost = CreatePostUI(self)
+        self.createPostButton.clicked.connect(self.callWritePost)
         #get profile information
 
     def update(self, username):
@@ -23,6 +25,10 @@ class Profile(QtWidgets.QMainWindow):
         self.DoBValue.setText(str(profile[4]))
         self.followerCount.setText(str(follower.countFollowers(mydb, username)))
         self.show()
+
+    def callWritePost(self):
+        self.createPost.show() 
+
 
 
 
