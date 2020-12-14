@@ -7,6 +7,8 @@ def createPost(mydb,username,content):
     mycursor.execute(sql,val)
     mydb.commit()
 
+    return mycursor.lastrowid
+
 def getAllUserPost(mydb, username):
     mycursor = mydb.cursor()
     sql = "SELECT * FROM POST WHERE UserName = %s"
