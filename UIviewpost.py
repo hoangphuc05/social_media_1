@@ -65,9 +65,9 @@ mydb = mysql.connector.connect(
 )
 
 
-app = QtWidgets.QApplication(sys.argv)
-window = Viewpost()
+# app = QtWidgets.QApplication(sys.argv)
+# window = Viewpost()
 
-window.show()
-window.update("nhatminh")
-app.exec()
+# window.show()
+# window.update("nhatminh")
+# app.exec()

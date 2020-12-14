@@ -4,6 +4,7 @@ import follower
 import sys
 import mysql.connector
 from UIpost import CreatePostUI
+from UIviewpost import Viewpost
 
 class Profile(QtWidgets.QMainWindow):
     global mydb
@@ -13,9 +14,12 @@ class Profile(QtWidgets.QMainWindow):
         uic.loadUi('profile.ui', self)
         self.createPost = CreatePostUI(self)
         self.createPostButton.clicked.connect(self.callWritePost)
+        self.viewPostUI = Viewpost(self)
+        self.viewpostButton.clicked.connect(self.viewAllPost)
         #get profile information
 
     def update(self, username):
+        self.username = username
         profile = user.getAccount(mydb, username)[0]
         self.usernameLabel.setText(profile[0])
         #self.usernameLabel.setAlignment(QtCore.Qt.AlignCenter)
@@ -28,6 +32,10 @@ class Profile(QtWidgets.QMainWindow):
 
     def callWritePost(self):
         self.createPost.show() 
+
+    def viewAllPost(self):
+        self.viewPostUI.update(self.username)
+        self.viewPostUI.show()
 
 
 

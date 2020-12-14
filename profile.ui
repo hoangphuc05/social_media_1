@@ -165,7 +165,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="viewpostButton">
+          <property name="text">
+           <string>View post feed</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="followUserButton">
           <property name="text">
            <string>Follow a person</string>
           </property>
