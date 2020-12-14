@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets, uic, QtCore
 import sys
 from functools import partial
 import credential
+import user
 import mysql.connector
 from UIpopup import PopUp
 
@@ -19,6 +20,7 @@ class NewAcct(QtWidgets.QMainWindow):
         self.newppop = PopUp(self,"New Account Created")
 
     def SignUp(self):
+        UserName = self.UserNameInput.text()
         Email = self.EmailInput.text()
         Password = self.PasswordInput.text()
         ConfirmPassword = self.ConfirmPasswordInput.text()
@@ -32,7 +34,12 @@ class NewAcct(QtWidgets.QMainWindow):
         if (Password != ConfirmPassword):
             self.popup.show()
         else:
-            self.newppop.show()    
+            self.newppop.show()
+            credential.createCredential(mydb,UserName,Password,Email)
+            user.createAccount(mydb,UserName,FirstName,LastName,Gender,dob)
+
+
+
 
 
 mydb = mysql.connector.connect(
