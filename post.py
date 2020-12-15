@@ -24,20 +24,6 @@ def getAllUserPost(mydb, username):
 
     return myresult
 
-#Count Likes
-def countLikes(mydb, PostID, ActionID):
-    mycursor = mydb.cursor()
-    sql = "SELECT COUNT(A.PostID) FROM ACTION as A WHERE A.ActionDescription = 'like post' AND A.PostID = %s"
-    val = (PostID,)
-
-    mycursor.execute(sql,val)
-
-    myresult = mycursor.fetchall()
-    if len(myresult) == 0:
-        return 0
-    else:
-        return myresult[0][0]
-        
 
 def getFollowerPosts(mydb, username, index = 0):
     # SELECT * from POST P

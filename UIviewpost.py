@@ -29,7 +29,12 @@ class Viewpost(QtWidgets.QMainWindow):
         self.currentPostID = postContent[0]
         self.authorLabel.setText(str(postContent[1]))
         self.content.setText(str(postContent[2]))
-
+        
+        
+        #number of likes
+        likes = action.countLikes(mydb, self.currentPostID)
+        self.likeCount.setText(str(likes) + " likes")
+        
         #check if the user already like the post
         if action.checkLike(mydb, self.currentUser, self.currentPostID):
             self.likeButton.setText("Unlike")
@@ -78,7 +83,10 @@ class Viewpost(QtWidgets.QMainWindow):
             action.unlike(mydb, self.currentUser, self.currentPostID)
             self.likeButton.setText("Like")
             #self.likeButton.setCheckable(False)
-        pass
+        
+        #number of likes
+        likes = action.countLikes(mydb, self.currentPostID)
+        self.likeCount.setText(str(likes) + " likes")
 
     def savePost(self):
         if self.saveButton.text() == "Save":

@@ -74,6 +74,20 @@ def unlike(mydb, UserID, PostID):
     mydb.commit()
     return True 
 
+#Count Likes
+def countLikes(mydb, PostID):
+    mycursor = mydb.cursor()
+    sql = "SELECT COUNT(A.PostID) FROM ACTION as A WHERE A.ActionDescription = 'like post' AND A.PostID = %s"
+    val = (PostID,)
+
+    mycursor.execute(sql,val)
+
+    myresult = mycursor.fetchall()
+    if len(myresult) == 0:
+        return 0
+    else:
+        return myresult[0][0]
+
 
 def createPost(mydb, UserID, PostID):
     createAction(mydb, UserID, PostID, "Create post")
