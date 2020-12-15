@@ -1,10 +1,13 @@
 from PyQt5 import QtWidgets, uic, QtCore
+from PyQt5.QtGui import QImage, QPixmap
 import user
 import follower
 import sys
 import mysql.connector
 from UIpost import CreatePostUI
 from UIviewpost import Viewpost
+import requests
+
 
 class Profile(QtWidgets.QMainWindow):
     global mydb
@@ -29,7 +32,16 @@ class Profile(QtWidgets.QMainWindow):
         self.genderValue.setText(profile[3])
         self.DoBValue.setText(str(profile[4]))
         self.followerCount.setText(str(follower.countFollowers(mydb, username)))
+
+        #try to pull image from Whitworth
+        whitworth = requests.get(f'https://www.whitworth.edu/administration/informationsystems/idcard/{self.user}.jpg')
+        if whitworth.status_code == 200:
+            ava  = QImage()
+            ava.loadFromData(whitworth.content)
+            self.ProfilePic.setPixmap(QPixmap(ava))
         self.show()
+
+
 
     def callWritePost(self):
         self.createPost.updateUser(self.user)
