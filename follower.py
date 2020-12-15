@@ -30,7 +30,11 @@ def countFollowers(mydb, AuthorFollowID):
     mycursor.execute(sql, val)
     
     myresult = mycursor.fetchall()
-    return myresult[0][0]
+    if len(myresult) == 0:
+        return 0
+    else:
+        return myresult[0][0]
+    
 
 
 
