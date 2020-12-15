@@ -39,6 +39,8 @@ class Profile(QtWidgets.QMainWindow):
         self.viewPostUI.update(self.username)
         self.viewPostUI.show()
 
+    
+
 
 
 
