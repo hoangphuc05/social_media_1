@@ -27,15 +27,16 @@ def getAllUserPost(mydb, username):
 #Count Likes
 def countLikes(mydb, PostID, ActionID):
     mycursor = mydb.cursor()
-    sql = "SELECT A.PostID, A.UserName FROM ACTION as A WHERE A.ActionDescription = 'like post' AND A.PostID = %s"
+    sql = "SELECT COUNT(A.PostID) FROM ACTION as A WHERE A.ActionDescription = 'like post' AND A.PostID = %s"
     val = (PostID,)
 
     mycursor.execute(sql,val)
 
     myresult = mycursor.fetchall()
-    for likes in myresult:
-        print (likes)
-    print(len(myresult))
+    if len(myresult) == 0:
+        return 0
+    else:
+        return myresult[0][0]
         
 
 def getFollowerPosts(mydb, username, index = 0):
@@ -62,7 +63,7 @@ def getFollowerPosts(mydb, username, index = 0):
 
 def countVisiblePost(mydb, username):
     mycursor = mydb.cursor()
-    sql = '''SELECT * from POST P
+    sql = '''SELECT COUNT(P.ID) from POST P
         WHERE P.UserName IN
             (SELECT FollowerID FROM FOLLOWER as F
             WHERE F.AuthorFollowID = %s);
@@ -71,6 +72,9 @@ def countVisiblePost(mydb, username):
 
     mycursor.execute(sql,val)
     myresult = mycursor.fetchall()
-    return len(myresult)
+    if len(myresult) == 0:
+        return 0
+    else:
+        return myresult[0][0]
 
     
