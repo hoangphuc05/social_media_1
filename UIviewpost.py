@@ -113,9 +113,9 @@ mydb = mysql.connector.connect(
 )
 
 
-app = QtWidgets.QApplication(sys.argv)
-window = Viewpost()
+#app = QtWidgets.QApplication(sys.argv)
+#window = Viewpost()
 
-window.show()
-window.update("pcai22")
-app.exec()
+#window.show()
+#window.update("pcai22")
+#app.exec()
