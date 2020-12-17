@@ -44,17 +44,6 @@ class Viewpost(QtWidgets.QMainWindow):
             if self.likeButton.isChecked():
                 self.likeButton.toggle()
 
-        #check if the user already Save the post
-        if action.checkSave(mydb, self.currentUser, self.currentPostID):
-            self.saveButton.setText("Unsave")
-            if not self.saveButton.isChecked():
-                self.saveButton.toggle()
-        else:
-            self.saveButton.setText("Save")
-            if self.saveButton.isChecked():
-                self.saveButton.toggle()
-            #self.saveButton.toggle()
-
 
     def nextPost(self):
         if self.currentIndex < self.indexMax:
@@ -87,22 +76,7 @@ class Viewpost(QtWidgets.QMainWindow):
         likes = action.countLikes(mydb, self.currentPostID)
         self.likeCount.setText(str(likes) + " likes")
 
-    def savePost(self):
-        if self.saveButton.text() == "Save":
-            action.savePost(mydb, self.currentUser, self.currentPostID)
-            self.saveButton.setText("Unsave")
-            #self.saveButton.setCheckable(False)
-        else:
-            action.unsave(mydb, self.currentUser, self.currentPostID)
-            self.saveButton.setText("Save")
-            #self.saveButton.setCheckable(True)
-
-
-        pass
             
-
-
-
 
 mydb = mysql.connector.connect(
     host="api.hphucs.me",
