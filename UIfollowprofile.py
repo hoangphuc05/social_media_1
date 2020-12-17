@@ -17,10 +17,12 @@ class FollowProfile(QtWidgets.QMainWindow):
         super(FollowProfile, self).__init__()
         uic.loadUi('followprofile.ui', self)
         self.authorID = authorID
+        #connect the follow button to follow function
         self.followbutton.clicked.connect(self.follow)
         self.cpopup = PopUp(self, "User is followed !")
         #get profile information
 
+    #update the windows to reflect the current user
     def update(self, username):
         self.username = username
         profile = user.getAccount(mydb, username)[0]
