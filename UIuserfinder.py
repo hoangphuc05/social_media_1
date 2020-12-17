@@ -9,7 +9,9 @@ from UIpopup import PopUp
 
 
 class Follow(QtWidgets.QMainWindow):
-    global mydb
+    global mydb #global variable for the dbms access
+
+    #initializing the UI
     def __init__(self, user,parent = None):
 
         super(Follow, self).__init__()
@@ -19,7 +21,8 @@ class Follow(QtWidgets.QMainWindow):
         self.profile = FollowProfile(user,self)
 
         self.seachbutton.clicked.connect(self.Search)
-        
+
+    #function to find the user from the input search box text     
     def Search(self):
         Searchname = self.searchbox.text()
 
