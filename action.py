@@ -21,6 +21,7 @@ def savePost(mydb,UserId,PostID):
     mycursor.execute(sql,val)
     mydb.commit()
 
+#check if a post is save
 def checkSave(mydb, UserID, PostID):
     mycursor = mydb.cursor()
     sql = "SELECT * FROM ACTION WHERE UserName = %s and PostID = %s and ActionDescription = 'saved post'"
@@ -33,6 +34,7 @@ def checkSave(mydb, UserID, PostID):
     else:
         return False
 
+#unsave a post
 def unsave(mydb, UserID, PostID):
     mycursor = mydb.cursor()
     sql = "DELETE FROM ACTION WHERE UserName = %s and PostID = %s and ActionDescription = 'saved post'"
@@ -52,6 +54,7 @@ def likePost(mydb, UserID, PostID):
     mycursor.execute(sql,val)
     mydb.commit()
 
+#check if the post is liked
 def checkLike(mydb, UserID, PostID):
     mycursor = mydb.cursor()
     sql = "SELECT * FROM ACTION WHERE UserName = %s and PostID = %s and ActionDescription = 'like post'"
@@ -63,7 +66,7 @@ def checkLike(mydb, UserID, PostID):
         return True
     else:
         return False
-
+#unlike the post
 def unlike(mydb, UserID, PostID):
     mycursor = mydb.cursor()
     Time = datetime.now()
@@ -88,7 +91,7 @@ def countLikes(mydb, PostID):
     else:
         return myresult[0][0]
 
-
+#let user create post
 def createPost(mydb, UserID, PostID):
     createAction(mydb, UserID, PostID, "Create post")
 
