@@ -172,13 +172,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="followUserButton">
-          <property name="text">
-           <string>Show saved posts</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="searchButton">
           <property name="text">
            <string>Search User</string>
