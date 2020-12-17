@@ -63,4 +63,14 @@ def countVisiblePost(mydb, username):
     else:
         return myresult[0][0]
 
+def countPost(mydb, username):
+    mycursor = mydb.cursor()
+    sql = "SELECT COUNT(*) FROM POST WHERE UserName = %s"
+    val = (username, )
+
+    mycursor.execute(sql, val)
+
+    myresult = mycursor.fetchall()
+
+    return myresult[0][0]
     

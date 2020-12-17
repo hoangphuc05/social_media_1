@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore
 from PyQt5.QtGui import QImage, QPixmap
 import user
 import follower
+import post
 import sys
 import mysql.connector
 from UIpost import CreatePostUI
@@ -37,6 +38,7 @@ class Profile(QtWidgets.QMainWindow):
         self.genderValue.setText(profile[3])
         self.DoBValue.setText(str(profile[4]))
         self.followerCount.setText(str(follower.countFollowers(mydb, username)))
+        self.postCount.setText(str(post.countPost(mydb,username)))
 
         #try to pull image from Whitworth
         whitworth = requests.get(f'https://www.whitworth.edu/administration/informationsystems/idcard/{self.user}.jpg')
