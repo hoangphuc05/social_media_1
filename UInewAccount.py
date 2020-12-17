@@ -4,7 +4,7 @@ import sys
 from functools import partial
 import credential
 import user
-import mysql.connector
+from mydb import mydb
 from UIpopup import PopUp
 
 class NewAcct(QtWidgets.QMainWindow):
@@ -38,12 +38,7 @@ class NewAcct(QtWidgets.QMainWindow):
             credential.createCredential(mydb,UserName,Password,Email)
             user.createAccount(mydb,UserName,FirstName,LastName,Gender,dob)
 
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
+
 
 if __name__ == '__main__':
 

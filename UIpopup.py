@@ -3,7 +3,6 @@ from PyQt5 import QtWidgets, uic, QtCore
 import sys
 from functools import partial
 import credential
-import mysql.connector
 
 
 class PopUp(QtWidgets.QDialog):

@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore
 import sys
 from functools import partial
 import credential
-import mysql.connector
+from mydb import mydb
 import post
 import action
 #sql for view post from user
@@ -78,12 +78,7 @@ class Viewpost(QtWidgets.QMainWindow):
 
             
 
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
+
 
 
 #app = QtWidgets.QApplication(sys.argv)
