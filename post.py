@@ -65,7 +65,7 @@ def countVisiblePost(mydb, username):
 
 def countPost(mydb, username):
     mycursor = mydb.cursor()
-    sql = "SELECT COUNT(*) FROM POST WHERE UserName = %s"
+    sql = "SELECT COUNT(ID) FROM POST WHERE UserName = %s"
     val = (username, )
 
     mycursor.execute(sql, val)
