@@ -12,7 +12,7 @@ from UIuserfinder import Follow
 
 
 class Profile(QtWidgets.QMainWindow):
-    global mydbv #global variable for the dbms access
+    global mydb #global variable for the dbms access
     
     #initilizing the UI
     def __init__(self, parent = None):
