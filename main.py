@@ -6,6 +6,7 @@ from mydb import mydb
 
 
 
+#call login window
 app = QtWidgets.QApplication(sys.argv)
 window = UIlogin.Login()
 window.show()
