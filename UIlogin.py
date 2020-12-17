@@ -41,8 +41,8 @@ class Login(QtWidgets.QMainWindow):
 
 
 
-
-app = QtWidgets.QApplication(sys.argv)
-window = Login()
-window.show()
-app.exec()
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    window = Login()
+    window.show()
+    app.exec()
