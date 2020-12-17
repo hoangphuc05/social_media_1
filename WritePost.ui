@@ -83,6 +83,11 @@
      <height>131</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="Line" name="line">
    <property name="geometry">
