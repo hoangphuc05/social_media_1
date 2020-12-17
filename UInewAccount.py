@@ -4,21 +4,24 @@ import sys
 from functools import partial
 import credential
 import user
-import mysql.connector
+from mydb import mydb
 from UIpopup import PopUp
 
 class NewAcct(QtWidgets.QMainWindow):
-    global mydb
+    global mydb #global variable for the dbms access
+
+    #initializing the UI
     def __init__(self, parent = None, text= "Wrong username or password!"):
        
         super(NewAcct, self).__init__()
         uic.loadUi('newacct.ui', self)
 
-        #add code to communicate with database and add account
+        
         self.SignUpButton.clicked.connect(self.SignUp)
         self.popup = PopUp(self, "Password Does Not Match")
         self.newppop = PopUp(self,"New Account Created")
 
+    #function query to sign up a new user account
     def SignUp(self):
         UserName = self.UserNameInput.text()
         Email = self.EmailInput.text()
@@ -30,7 +33,8 @@ class NewAcct(QtWidgets.QMainWindow):
 
         temp_var = self.dateEdit.date() 
         dob = temp_var.toPyDate()
-
+        
+        #check in both the password field matches
         if (Password != ConfirmPassword):
             self.popup.show()
         else:
@@ -38,16 +42,8 @@ class NewAcct(QtWidgets.QMainWindow):
             credential.createCredential(mydb,UserName,Password,Email)
             user.createAccount(mydb,UserName,FirstName,LastName,Gender,dob)
 
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 if __name__ == '__main__':
-
-
 
     app = QtWidgets.QApplication(sys.argv)
     window = NewAcct()

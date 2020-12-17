@@ -4,7 +4,7 @@ from functools import partial
 import user
 #from UIprofile import Profile
 from UIfollowprofile import FollowProfile
-import mysql.connector
+from mydb import mydb
 from UIpopup import PopUp
 
 
@@ -35,12 +35,6 @@ class Follow(QtWidgets.QMainWindow):
 
                         
 
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 if __name__ == '__main__':
 

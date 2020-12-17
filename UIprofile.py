@@ -4,7 +4,7 @@ import user
 import follower
 import post
 import sys
-import mysql.connector
+from mydb import mydb
 from UIpost import CreatePostUI
 from UIviewpost import Viewpost
 import requests
@@ -12,7 +12,9 @@ from UIuserfinder import Follow
 
 
 class Profile(QtWidgets.QMainWindow):
-    global mydb
+    global mydbv #global variable for the dbms access
+    
+    #initilizing the UI
     def __init__(self, parent = None):
         
         super(Profile, self).__init__()
@@ -25,6 +27,7 @@ class Profile(QtWidgets.QMainWindow):
         self.searchButton.clicked.connect(self.findUser)
         #get profile information
 
+    #fucntion query to update information of the user
     def update(self, username):
         self.username = username
         profile = user.getAccount(mydb, username)[0]
@@ -40,7 +43,7 @@ class Profile(QtWidgets.QMainWindow):
         self.followerCount.setText(str(follower.countFollowers(mydb, username)))
         self.postCount.setText(str(post.countPost(mydb,username)))
 
-        #try to pull image from Whitworth
+        #Pull image from Whitworth directionary
         whitworth = requests.get(f'https://www.whitworth.edu/administration/informationsystems/idcard/{self.user}.jpg')
         if whitworth.status_code == 200:
             ava  = QImage()
@@ -48,12 +51,12 @@ class Profile(QtWidgets.QMainWindow):
             self.ProfilePic.setPixmap(QPixmap(ava))
         self.show()
 
-
-
+    #fucntion query to write a post    
     def callWritePost(self):
         self.createPost.updateUser(self.user)
         self.createPost.show() 
 
+    #fucntion query to view all the post
     def viewAllPost(self):
         self.viewPostUI.update(self.username)
         self.viewPostUI.show()
@@ -62,18 +65,6 @@ class Profile(QtWidgets.QMainWindow):
         self.searchUserUI.show()
         pass
 
-    
-
-
-
-
-
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 
 # app = QtWidgets.QApplication(sys.argv)

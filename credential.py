@@ -26,6 +26,7 @@ def changeEmail(mydb, username, newEmail):
     mycursor.execute(sql, val)
     mydb.commit()
 
+#check if the username and password are correct to login
 def checkCredential(mydb, username, password):
     mycursor = mydb.cursor()
     sql = "SELECT Password from CREDENTIAL where UserName = %s"

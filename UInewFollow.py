@@ -3,12 +3,14 @@ import sys
 from functools import partial
 import user
 import follower
-import mysql.connector
+from mydb import mydb
 from UIpopup import PopUp
 
 
 class Follow(QtWidgets.QMainWindow):
-    global mydb
+    global mydb #global variable for the dbms access
+
+    #initializing the UI
     def __init__(self, parent = None):
        
         super(Follow, self).__init__()
@@ -19,6 +21,7 @@ class Follow(QtWidgets.QMainWindow):
         self.failPopup = PopUp(self, "Follow fail!")
         #self.usernameLabel.setText('')
 
+    #function to follow the user from the user input
     def follow(self):
         author = self.authorID.text()
         followerID = self.followID.text()
@@ -28,16 +31,6 @@ class Follow(QtWidgets.QMainWindow):
         else:
             follower.addFollowerToList(mydb, author, followerID)
             self.successPopup.show()
-
-
-
-
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 
 app = QtWidgets.QApplication(sys.argv)
