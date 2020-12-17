@@ -18,7 +18,6 @@ class Viewpost(QtWidgets.QMainWindow):
         self.nextButton.clicked.connect(self.nextPost)
         self.prevButton.clicked.connect(self.prevPost)
         self.likeButton.clicked.connect(self.likePost)
-        self.saveButton.clicked.connect(self.savePost)
         #self.show()
         #self.usernameLabel.setText('')
 
