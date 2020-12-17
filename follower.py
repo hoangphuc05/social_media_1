@@ -25,7 +25,7 @@ def deleteFollower(mydb, FollowerID):
 #count the number of followers that an account has
 def countFollowers(mydb, AuthorFollowID):
     mycursor = mydb.cursor()
-    sql = "SELECT COUNT(FollowerID) FROM FOLLOWER WHERE AuthorFollowID = %s"
+    sql = "SELECT COUNT(FollowerID) FROM FOLLOWER WHERE FollowerID = %s"
     val = (AuthorFollowID,)
     mycursor.execute(sql, val)
     

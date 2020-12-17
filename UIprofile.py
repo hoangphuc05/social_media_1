@@ -7,6 +7,7 @@ import mysql.connector
 from UIpost import CreatePostUI
 from UIviewpost import Viewpost
 import requests
+from UIuserfinder import Follow
 
 
 class Profile(QtWidgets.QMainWindow):
@@ -18,13 +19,17 @@ class Profile(QtWidgets.QMainWindow):
         self.createPost = CreatePostUI(self)
         self.createPostButton.clicked.connect(self.callWritePost)
         self.viewPostUI = Viewpost(self)
+        
         self.viewpostButton.clicked.connect(self.viewAllPost)
+        self.searchButton.clicked.connect(self.findUser)
         #get profile information
 
     def update(self, username):
         self.username = username
         profile = user.getAccount(mydb, username)[0]
         self.user = username
+
+        self.searchUserUI = Follow(username, self)
         self.usernameLabel.setText(profile[0])
         #self.usernameLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.firstNameLabel.setText(profile[1])
@@ -50,6 +55,10 @@ class Profile(QtWidgets.QMainWindow):
     def viewAllPost(self):
         self.viewPostUI.update(self.username)
         self.viewPostUI.show()
+
+    def findUser(self):
+        self.searchUserUI.show()
+        pass
 
     
 

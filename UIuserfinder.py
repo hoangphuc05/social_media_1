@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic
 import sys
 from functools import partial
 import user
-from UIprofile import Profile
+#from UIprofile import Profile
 from UIfollowprofile import FollowProfile
 import mysql.connector
 from UIpopup import PopUp
