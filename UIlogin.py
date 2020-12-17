@@ -9,7 +9,9 @@ from UIprofile import Profile
 
 
 class Login(QtWidgets.QMainWindow):
-    global mydb
+    global mydb #global variable for the dbms access
+
+    #initializing the UI
     def __init__(self, parent = None):
        
         super(Login, self).__init__()
@@ -22,10 +24,12 @@ class Login(QtWidgets.QMainWindow):
         self.profile = Profile(self)
         #self.usernameLabel.setText('')
 
+    #function to register a new acct
     def newAccount(self):
         print("a")
         self.registerAccount.show()
 
+    #function to check credentials from user input then login
     def login(self):
         username = self.usernameInput.text()
         password = self.passwordInput.text()
@@ -38,7 +42,7 @@ class Login(QtWidgets.QMainWindow):
             self.popup.show()
 
 
-
+#connecting with the sql server
 mydb = mysql.connector.connect(
     host="api.hphucs.me",
     user="cs300",

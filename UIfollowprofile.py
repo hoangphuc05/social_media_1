@@ -11,7 +11,7 @@ from UIpopup import PopUp
 
 
 class FollowProfile(QtWidgets.QMainWindow):
-    global mydb
+    global mydb 
     def __init__(self, authorID, parent = None):
         
         super(FollowProfile, self).__init__()
