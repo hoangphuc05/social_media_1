@@ -3,7 +3,7 @@ from PyQt5.QtGui import QImage, QPixmap
 import user
 import follower
 import sys
-import mysql.connector
+from mydb import mydb
 from UIpost import CreatePostUI
 from UIviewpost import Viewpost
 import requests
@@ -47,11 +47,3 @@ class FollowProfile(QtWidgets.QMainWindow):
 
 
 
-
-
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)

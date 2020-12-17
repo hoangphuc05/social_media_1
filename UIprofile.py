@@ -4,7 +4,7 @@ import user
 import follower
 import post
 import sys
-import mysql.connector
+from mydb import mydb
 from UIpost import CreatePostUI
 from UIviewpost import Viewpost
 import requests
@@ -66,13 +66,6 @@ class Profile(QtWidgets.QMainWindow):
         pass
 
 
-#connecting with the sql server
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 # app = QtWidgets.QApplication(sys.argv)
 # window = Profile('pcai22')

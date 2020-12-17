@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic, QtCore
 import sys
 from functools import partial
-import mysql.connector 
+from mydb import mydb
 import post
 import user
 
@@ -25,14 +25,6 @@ class CreatePostUI(QtWidgets.QDialog):
         content = self.InputMessage.toPlainText()
         post.createPost(mydb, username, content)
         self.close()
-  
-#connecting with the sql server
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 # app = QtWidgets.QApplication(sys.argv)
 # window = CreatePostUI()

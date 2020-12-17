@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, uic
 import sys
 from functools import partial
-import mysql.connector
+from mydb import mydb
 
 class Ui3(QtWidgets.QMainWindow):
     global mydb #global variable for the dbms access
@@ -31,14 +31,6 @@ class Ui3(QtWidgets.QMainWindow):
         searchResult = self.getFirstName(mydb, userName)
         res = [''.join(i) for i in searchResult]
         self.listWidget.addItems(res)
-
-#connecting with the sql server
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 app = QtWidgets.QApplication(sys.argv)
 windown = Ui3()

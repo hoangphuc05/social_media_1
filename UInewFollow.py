@@ -3,7 +3,7 @@ import sys
 from functools import partial
 import user
 import follower
-import mysql.connector
+from mydb import mydb
 from UIpopup import PopUp
 
 
@@ -31,15 +31,6 @@ class Follow(QtWidgets.QMainWindow):
         else:
             follower.addFollowerToList(mydb, author, followerID)
             self.successPopup.show()
-
-
-#connecting with the sql server
-mydb = mysql.connector.connect(
-    host="api.hphucs.me",
-    user="cs300",
-    password="Whitworth000",
-    database="FinalProject"
-)
 
 
 app = QtWidgets.QApplication(sys.argv)
